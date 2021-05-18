@@ -1,0 +1,14 @@
+﻿@model IEnumerable<MotoGP.Models.Race>
+
+@{
+    ViewData["Title"] = "Races";
+}
+
+<img src="~/images/allerlei/map.png" alt="map" usemap="#workmap"  width="1024" height="468">
+
+<map name="workmap">
+    @foreach (var r in Model)
+    {
+        <area shape="circle" coords="@r.X,@r.Y,10" alt="@r.Name" href="/Info/ShowRace/@r.RaceID">
+    }
+</map>

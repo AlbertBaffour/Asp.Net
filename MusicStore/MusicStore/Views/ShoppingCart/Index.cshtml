@@ -1,0 +1,76 @@
+﻿@model IEnumerable<MusicStore.Models.CartItem>
+
+@{
+    ViewData["Title"] = "Shopping Cart";
+    var total = 0;
+}
+
+<br />
+
+<h1>Shopping Cart</h1>
+<h4>Review your albums</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(m => m.Album)
+            </th>
+            <th>
+                @(Html.DisplayNameFor(m => m.Album.Price))(each)
+            </th>
+            <th>
+                Quantity
+            </th>
+            <th>
+                Total
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <a class="text-decoration-none" asp-controller="Store" asp-action="Details" asp-route-id="@item.AlbumID">
+                        @(Html.DisplayFor(model => item.Album.Title))
+                    </a>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Album.Price) euro
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Count)
+                </td>
+                <td>
+                    @(item.Count*item.Album.Price) euro
+                </td>
+                <td>
+                    <a asp-action="DecreaseItem" asp-route-id="@item.CartItemID">-</a>
+                    | <a asp-action="IncreaseItem" asp-route-id="@item.CartItemID">+</a>
+                    | <a asp-action="RemoveFromCart" asp-route-id="@item.CartItemID">Remove</a>
+                </td>
+            </tr>
+            <p hidden>@(total += item.Count * item.Album.Price)</p>
+        }
+
+    </tbody>
+    <thead>
+        <tr>
+            <th>
+                Total
+            </th>
+            <th></th>
+            <th></th>
+            <th>
+                @total euro
+            </th>
+            <th></th>
+        </tr>
+        <tr></tr>
+    </thead>
+
+</table>
+<a asp-controller="Checkout" asp-action="Create">Checkout</a> |
+<a asp-controller="Home" asp-action="Index">Back to home</a>

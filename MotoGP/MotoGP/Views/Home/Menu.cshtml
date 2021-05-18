@@ -1,0 +1,45 @@
+﻿@{
+    Layout = "~/Views/Shared/_NewLayout.cshtml";
+    ViewData["Title"] = "Menu - MotoGP";
+}
+
+<img class="banner" src="~/images/allerlei/banner@(ViewData["BannerNr"]).jpg" alt="Alternate Text" />
+<div>
+    <div class="centered">
+        <div class="row">
+            <a asp-controller="Info" asp-action="ListRaces" class="column"><img src="~/images/allerlei/races.png" alt="races" /></a>
+            <a asp-controller="Info" asp-action="ListTeams" class="column"><img src="~/images/allerlei/teams.png" alt="teams" /></a>
+        </div><div class="row">
+            <a asp-controller="Info" asp-action="ListRiders" class="column"><img src="~/images/allerlei/riders.png" alt="riders" /></a>
+            <a asp-controller="Shop" asp-action="OrderTicket" class="column"><img src="~/images/allerlei/tickets.png" alt="Order ticket" /></a>
+        </div>
+    </div>
+</div>
+<p><a asp-controller="Shop" asp-action="ListTickets">Admin tickets</a></p>
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    .banner {
+        width: 100%;
+    }
+
+    .centered {
+        position: fixed;
+        top: 60%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .column {
+        float: left;
+        width: 50%;
+        padding: 10px;
+    }
+
+    .row {
+        display: table;
+    }
+</style>

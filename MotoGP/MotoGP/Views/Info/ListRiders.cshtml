@@ -1,0 +1,41 @@
+﻿@model IEnumerable<MotoGP.Models.Rider>
+
+@{
+    ViewData["Title"] = "Riders";
+
+}
+
+<div class="row col-10 m-3">
+    @foreach (var r in Model.OrderBy(m => m.Number))
+    {
+        <div class="col-3 bg-grey m-2">
+
+
+            <img class="pt-2 col-12" src="~/images/rijders/@(r.Number).jpg" alt="rider">
+            <div class="pt-2 d-flex flex-wrap justify-content-between">
+                <div class="col-3">
+                    <img src="~/images/vlaggen/@(r.CountryID).png " alt="vlag">
+                </div><div class="col-3">
+                    <h3> @(Html.DisplayFor(model =>r.Number))</h3>
+                </div>
+            </div>
+            <p class="">
+                @(Html.DisplayFor(model =>r.FirstName))
+                @(Html.DisplayFor(model =>r.LastName))
+            </p>
+        </div>
+    }
+</div>
+<style>
+    .bg-grey {
+        background-color: lightgrey;
+    }
+
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+        box-sizing: border-box;
+        align-items: stretch;
+    }
+</style>
+<link href="~/css/bootstrap.min.css" rel="stylesheet"/>
