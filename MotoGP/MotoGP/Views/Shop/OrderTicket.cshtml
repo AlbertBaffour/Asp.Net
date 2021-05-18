@@ -1,0 +1,61 @@
+﻿@model MotoGP.Models.ViewModel.OrderTicketViewModel
+@{
+    ViewData["Title"] = "Order Tickets";
+}
+<p>Please fill out the following fields</p>
+<form asp-action="Create">
+    <label asp-for="ticket.Name">@Html.DisplayNameFor(model => model.ticket.Name)</label>
+    <input asp-for="ticket.Name" />
+    <br />
+    <br />
+
+    <label asp-for="ticket.Email">@Html.DisplayNameFor(model => model.ticket.Email)</label>
+    <input asp-for="ticket.Email" />
+    <br />
+    <br />
+
+    <label asp-for="ticket.Address">@Html.DisplayNameFor(model => model.ticket.Address)</label>
+    <input asp-for="ticket.Address" />
+    <br />
+    <br /> <label asp-for="ticket.CountryID">@Html.DisplayNameFor(model => model.ticket.Country)</label>
+    <select asp-for="ticket.CountryID" asp-items="Model.Landen"></select>
+    <br />
+    <label asp-for="ticket.Race">@Html.DisplayNameFor(model => model.ticket.Race)</label>
+    <div>
+        @foreach (var r in Model.Races)
+        {
+            <input asp-for="ticket.RaceID" type="radio" value="@r.RaceID" />@(Html.DisplayFor(modelItem => r.Name))
+            <br />
+        }
+    </div>
+    <br />
+
+    <label asp-for="ticket.Number">@Html.DisplayNameFor(model => model.ticket.Number)</label>
+    <input asp-for="ticket.Number" type="radio" value="1" />1
+    <input asp-for="ticket.Number" type="radio" value="2" />2
+    <input asp-for="ticket.Number" type="radio" value="3" />3
+    <input asp-for="ticket.Number" type="radio" value="4" />4
+    <input asp-for="ticket.Number" type="radio" value="5" />5
+    <input asp-for="ticket.Number" type="radio" value="6" />6
+    <br />
+    <input type="submit" value="Order" />
+</form>
+<br />
+<a asp-controller="Home" asp-action="Menu">Back</a>
+<style>
+    label{
+        width:50px;
+    }
+    .df{display:flex;
+        flex-wrap:wrap;
+    }
+    .col2{
+        width:20%;
+    } 
+    .centered {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+</style>

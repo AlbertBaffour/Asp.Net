@@ -1,0 +1,25 @@
+﻿@model IEnumerable<MotoGP.Models.Team>
+
+@{
+    ViewData["Title"] = "Teams";
+
+}
+<div class="row col-10 m-3">
+    @foreach (var t in Model.OrderBy(m => m.Name))
+    {
+
+     }
+   </div>
+        <style>
+            .bg-grey {
+                background-color: lightgrey;
+            }
+
+            .row {
+                display: flex;
+                flex-wrap: wrap;
+                box-sizing: border-box;
+                align-items: stretch;
+            }
+        </style>
+        <link href="~/css/bootstrap.min.css" rel="stylesheet" />
