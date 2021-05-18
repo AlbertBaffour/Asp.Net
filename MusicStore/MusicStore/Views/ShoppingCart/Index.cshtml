@@ -48,11 +48,11 @@
                 </td>
                 <td>
                     <a asp-action="DecreaseItem" asp-route-id="@item.CartItemID">-</a>
-                     | <a asp-action="IncreaseItem" asp-route-id="@item.CartItemID">+</a>
-                     | <a asp-action="RemoveFromCart" asp-route-id="@item.CartItemID">Remove</a>
+                    | <a asp-action="IncreaseItem" asp-route-id="@item.CartItemID">+</a>
+                    | <a asp-action="RemoveFromCart" asp-route-id="@item.CartItemID">Remove</a>
                 </td>
             </tr>
-            @(total += item.Count * item.Album.Price)
+            <p hidden>@(total += item.Count * item.Album.Price)</p>
         }
 
     </tbody>
@@ -65,10 +65,12 @@
             <th></th>
             <th>
                 @total euro
-        </th>
-        <th></th>
-    </tr>
-    <tr></tr>
-</thead>
-<a asp-controller="Home" asp-action="Index">Back to home</a>
+            </th>
+            <th></th>
+        </tr>
+        <tr></tr>
+    </thead>
+
 </table>
+<a asp-controller="Checkout" asp-action="Create">Checkout</a> |
+<a asp-controller="Home" asp-action="Index">Back to home</a>
