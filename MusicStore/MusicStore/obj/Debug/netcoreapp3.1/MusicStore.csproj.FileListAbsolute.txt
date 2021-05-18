@@ -207,3 +207,5 @@ D:\SCHOOL 2020-21\ASP.Net\www\MusicStore\MusicStore\obj\Debug\netcoreapp3.1\Razo
 D:\SCHOOL 2020-21\ASP.Net\www\MusicStore\MusicStore\obj\Debug\netcoreapp3.1\Razor\Views\ShoppingCart\Index.cshtml.g.cs
 D:\SCHOOL 2020-21\ASP.Net\www\MusicStore\MusicStore\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\CartSummary\Default.cshtml.g.cs
 D:\SCHOOL 2020-21\ASP.Net\www\MusicStore\MusicStore\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\GenreMenu\Default.cshtml.g.cs
+D:\SCHOOL 2020-21\ASP.Net\www\MusicStore\MusicStore\obj\Debug\netcoreapp3.1\Razor\Views\Checkout\Complete.cshtml.g.cs
+D:\SCHOOL 2020-21\ASP.Net\www\MusicStore\MusicStore\obj\Debug\netcoreapp3.1\Razor\Views\Checkout\Create.cshtml.g.cs

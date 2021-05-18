@@ -1,11 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using MusicStore.Data;
+using MusicStore.Models;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace MusicStore.Components
 {
-    public class CartSummaryComponent
+    [ViewComponent(Name = "CartSummary")]
+    public class CartSummaryComponent : ViewComponent
     {
+        private readonly StoreContext _context;
+
+        public CartSummaryComponent(StoreContext context)
+        {
+            _context = context;
+        }
+
+        public async Task<IViewComponentResult> InvokeAsync()
+        {
+            var cart = new ShoppingCart(HttpContext, _context);
+
+            ViewData["CartCount"] = cart.GetCount();
+            
+            return View();
+        }
     }
 }
