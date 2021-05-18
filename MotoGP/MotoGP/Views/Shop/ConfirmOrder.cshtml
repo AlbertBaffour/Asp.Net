@@ -1,0 +1,21 @@
+﻿@model MotoGP.Models.Ticket
+@{
+    ViewData["Title"] = "Confirmation";
+}
+<p>
+    Thank you @Html.DisplayFor(r => r.Name) for ordering tickets for the race in
+    @Html.DisplayFor(r => r.Race.Name) on  @Html.DisplayFor(r => r.Race.Date).
+    Your booking is registered on @DateTime.Now.Date.ToString("dd/MM/yyyy") .
+    We will send the  @Html.DisplayFor(r => r.Number) tickets as soon as possible
+</p>
+
+
+<a asp-controller="Home" asp-action="Menu">Back</a>
+<style>
+    .centered {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+</style>

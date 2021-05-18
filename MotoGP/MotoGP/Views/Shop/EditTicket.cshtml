@@ -1,0 +1,53 @@
+@model MotoGP.Models.Ticket
+
+@{
+    ViewData["Title"] = "Edit Tickets";
+}
+
+<form asp-action="EditTicket">
+
+    <input type="hidden" asp-for="TicketID" />
+    <table>
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.Name)</td>
+            <td>@Html.DisplayFor(model => model.Name)</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.Email)</td>
+            <td>@Html.DisplayFor(model => model.Email)</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.Address)</td>
+            <td>@Html.DisplayFor(model => model.Address)</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.Country)</td>
+            <td>@Html.DisplayFor(model => model.Country)</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.Race)</td>
+            <td>@Html.DisplayFor(model => model.Race.Name)</td>
+        </tr>
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.Number)</td>
+            <td>@Html.DisplayFor(model => model.Number)</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>@Html.CheckBoxFor(m => m.Paid)</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <input type="submit" value="Register" />
+            </td>
+        </tr>
+
+    </table>
+</form>
+
+<br />
+
+<div>
+    <a asp-action="ListTickets">Back</a>
+</div>

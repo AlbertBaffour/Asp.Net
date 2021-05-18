@@ -1,0 +1,70 @@
+﻿@model MotoGP.Models.ViewModel.SelectRacetViewModel
+
+@{
+    ViewData["Title"] = "Races";
+
+}
+
+<form asp-controller="Info" asp-action="SelectRace" method="get" onchange="this.submit()">
+    
+    <select id="race" asp-for="raceID" asp-items="Model.Races">
+        <option>-- Select a race --</option>
+    </select>
+</form>
+@if (Model.selectedRace.RaceID > 0)
+{
+    <div class="d-flex">
+        <div class="col-a">
+            <img class="" src="~/images/races/@(Model.selectedRace.RaceID).jpg" alt="race">
+        </div>
+        <div class="col-b">
+            <p>
+                 @(Html.DisplayFor(model => model.selectedRace.Name)) -  @(Html.DisplayFor(model => model.selectedRace.Country))
+            </p>
+            <p>
+                Length:  @(Html.DisplayFor(model => model.selectedRace.Length))m
+            </p>
+            <p>
+                Date:  @(Html.DisplayFor(model => model.selectedRace.Date))
+            </p>
+            <br />
+            <p>
+                @(Html.DisplayFor(model => model.selectedRace.Description))
+            </p>
+            
+        </div>
+    </div>
+}
+
+
+
+<br />
+<a asp-controller="Info" asp-action="ListRaces">Back</a>
+<style>
+    .bg-grey {
+        background-color: lightgrey;
+    }
+
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+        box-sizing: border-box;
+        align-items: stretch;
+    }
+
+    .d-flex {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    div{
+        padding:5px;
+    }
+    m-auto{
+        margin:auto;
+    }
+    .col-a{
+        width:30%
+    } .col-b{
+        width:60%
+    }
+</style>

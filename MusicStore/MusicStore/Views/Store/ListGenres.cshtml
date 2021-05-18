@@ -1,0 +1,34 @@
+﻿@model IEnumerable<MusicStore.Models.Genre>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Genres</h1>
+
+<h3>
+   Select
+</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+          
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                <a class="text-decoration-none" asp-controller="Store" asp-action="ListAlbums" asp-route-id="@item.GenreID">
+                    @Html.DisplayFor(modelItem => item.Name)
+                    </a>
+            </td>
+          
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,41 @@
+﻿@model IEnumerable<MotoGP.Models.Race>
+
+@{
+    ViewData["Title"] = "Races";
+
+}
+
+@foreach (var r in Model.OrderBy(m => m.Date).GroupBy(m => m.Date.ToString("MMMM")))
+{
+
+    <h2>
+        @(Html.DisplayFor(modelItem => r.Key))
+    </h2>
+    foreach (var d in Model.OrderBy(m => m.Date))
+    {
+        if (d.Date.ToString("MMMM") == r.Key)
+        {
+<p>
+    @(Html.DisplayFor(modelItem => d.Date))
+    <a asp-controller="Info" asp-action="ShowRace" asp-route-id="@d.RaceID">@(Html.DisplayFor(modelItem => d.Name))</a>
+</p>
+        }
+
+    }
+
+}
+
+@*<a asp-controller="Movies" asp-action="Details"
+    asp-route-id="@item.MovieID">@(Html.DisplayFor(modelItem => item.Title))</a>*@
+
+<a asp-controller="Home" asp-action="Menu">Back</a>
+|<a asp-controller="Info" asp-action="BuildMap"> Races on map</a>
+               |<a asp-controller="Info" asp-action="SelectRace"> One by one</a>
+<style>
+    .centered {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50 %, -50 %);
+    }
+</style>

@@ -1,0 +1,75 @@
+﻿@model MusicStore.Areas.Admin.Models.ViewModel.ListAlbumsViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<hr />
+<h3>Filter op:</h3>
+<form asp-controller="Albums" asp-action="Index" method="get" onchange="this.submit()">
+
+    <dl>
+    <dt> @Html.DisplayNameFor(model => model.Genres):</dt>
+    <dd>
+        <select asp-for="genreID" asp-items="Model.Genres">
+            <option value="0">-- Select a genre --</option>
+        </select>
+    </dd>
+    <dt> @Html.DisplayNameFor(model => model.Artists):</dt>
+    <dd>
+        <select asp-for="artistID" asp-items="Model.Artists">
+            <option value="0">-- Select an artist --</option>
+        </select>
+    </dd>
+        <dt>   @Html.DisplayNameFor(model => model.title):</dt>
+        <dd>
+            <input asp-for="title" />
+        </dd>
+        </dl>
+</form>
+<br />
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+
+                @Html.DisplayNameFor(model => model.Artists)
+            </th>
+              <th>
+                @Html.DisplayNameFor(model => model.Genres)
+            </th>
+            <th>
+
+                @Html.DisplayNameFor(model => model.Albums[0].Title)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Albums) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Artist.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Genre.Name)
+            </td>
+          
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.AlbumID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.AlbumID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.AlbumID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
